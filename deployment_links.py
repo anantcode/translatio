@@ -10,6 +10,8 @@ class TranslnBot:
 		xp_btn_submit = '/html/body/div[2]/div[2]/form/table/tbody/tr[4]/td/input'
 
 		xp_account_my_ss2_ac = '/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[43]/td[3]/a'
+		xp_account_qa_bundler = '/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[43]/td[3]/a'
+
 
 		# Opening JSON file
 		f = open('data\login.json',)
@@ -37,7 +39,9 @@ class TranslnBot:
 		# Actually logging in 
 		self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[4]/input').click()
 
+		# Choosing the account/role
 		self.driver.find_element_by_xpath(xp_account_my_ss2_ac).click()
+
 		self.driver.find_element_by_xpath(xp_field_nickname).send_keys(answer)
 		self.driver.find_element_by_xpath(xp_btn_submit).click()
 
