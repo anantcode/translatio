@@ -34,6 +34,9 @@ class TranslnBot:
 		# Actually logging in 
 		self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[4]/input').click()
 
-		sleep(10)
+		sleep(4)
+
+		self.driver.find_element_by_xpath('/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[43]/td[3]/a').click()
+		sleep(100)
 
 TranslnBot()
