@@ -1,5 +1,4 @@
 from selenium import webdriver
-from time import sleep
 
 class TranslnBot:
 	def __init__(self):
