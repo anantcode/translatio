@@ -4,9 +4,6 @@ import json
 
 class TranslnBot:
 	def __init__(self):
-		self.driver = webdriver.Chrome()
-		self.driver.get("https://google.com")
-		sleep(2)
 
 		# Opening JSON file
 		f = open('data\login.json',)
@@ -24,8 +21,19 @@ class TranslnBot:
 		print(pasw)
 
 
+		self.driver = webdriver.Chrome()
+		self.driver.get(url)
+		sleep(2)
+
 		# Closing file
 		f.close()
 
+		field_user = self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[1]/input[3]').send_keys(user)
+		field_pass = self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[2]/input').send_keys(pasw)
+
+		# Actually logging in 
+		self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[4]/input').click()
+
+		sleep(10)
 
 TranslnBot()
