@@ -1,5 +1,7 @@
 from selenium import webdriver
 from time import sleep
+from selenium.webdriver.common.action_chains import ActionChains
+
 import json
 
 class TranslnBot:
@@ -11,6 +13,8 @@ class TranslnBot:
 
 		xp_account_my_ss2_ac = '/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[43]/td[3]/a'
 		xp_account_qa_bundler = '/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[90]/td[3]/a'
+
+		xp_menu_script_deployment = '/html/body/div[1]/div[1]/div[2]/ul[4]/li[8]/ul/li[4]/ul/li[2]/a'
 
 
 		# Opening JSON file
@@ -48,8 +52,30 @@ class TranslnBot:
 		self.driver.find_element_by_xpath(xp_field_nickname).send_keys(answer)
 		self.driver.find_element_by_xpath(xp_btn_submit).click()
 
-		sleep(100)
 
+		ac1 = ActionChains(self.driver)
+		#identify element
+		m1 = self.driver.find_element_by_link_text("Customization")
+		#hover over element
+		ac1.move_to_element(m1).perform()
+		#identify sub menu element
+		n1 = self.driver.find_element_by_link_text("Scripting")
+		# hover over element
+		ac1.move_to_element(n1).perform()
+		#identify sub menu element
+		n2 = self.driver.find_element_by_link_text("Script Deployments")
+		# hover over element and click
+		ac1.move_to_element(n2).click().perform()
+
+
+		# select = Select(self.driver.find_element_by_id('fruits01'))
+		# # select by visible text
+		# select.select_by_visible_text('Customization')
+		# select.select_by_visible_text('Scripting')
+		# select.select_by_visible_text('Script Deployments')
+
+		# self.driver.find_element_by_xpath(xp_menu_script_deployment).click()
+		sleep()
 		
 
 TranslnBot()
