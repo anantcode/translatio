@@ -32,6 +32,7 @@ class TranslnBot:
 		print(user)
 
 		self.driver = webdriver.Chrome()
+		self.driver.maximize_window()
 		self.driver.get(url)
 
 		# Closing file
@@ -52,30 +53,16 @@ class TranslnBot:
 		self.driver.find_element_by_xpath(xp_field_nickname).send_keys(answer)
 		self.driver.find_element_by_xpath(xp_btn_submit).click()
 
+		#sleeping, to ensure "Customization" is loaded
+		sleep(1)
 
-		ac1 = ActionChains(self.driver)
-		#identify element
-		m1 = self.driver.find_element_by_link_text("Customization")
-		#hover over element
-		ac1.move_to_element(m1).perform()
-		#identify sub menu element
-		n1 = self.driver.find_element_by_link_text("Scripting")
-		# hover over element
-		ac1.move_to_element(n1).perform()
-		#identify sub menu element
-		n2 = self.driver.find_element_by_link_text("Script Deployments")
-		# hover over element and click
-		ac1.move_to_element(n2).click().perform()
-
-
-		# select = Select(self.driver.find_element_by_id('fruits01'))
-		# # select by visible text
-		# select.select_by_visible_text('Customization')
-		# select.select_by_visible_text('Scripting')
-		# select.select_by_visible_text('Script Deployments')
-
-		# self.driver.find_element_by_xpath(xp_menu_script_deployment).click()
-		sleep()
 		
+		# URL of Deployment in edit mode:
+		url_deployment_prefs = 'https://4346104.app.netsuite.com/app/common/scripting/scriptrecord.nl?id=378&e=T'
+
+		# Login is done, directly navigating to required suitelet deployment by ID: 378
+		self.driver.get(url_deployment_prefs)
+		sleep()
+
 
 TranslnBot()
