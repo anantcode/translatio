@@ -5,6 +5,12 @@ import json
 class TranslnBot:
 	def __init__(self):
 
+		xp_field_question = '/html/body/div[2]/div[2]/form/table/tbody/tr[3]/td/table/tbody/tr[2]/td[2]'
+		xp_field_nickname = '/html/body/div[2]/div[2]/form/table/tbody/tr[3]/td/table/tbody/tr[3]/td[2]/input'
+		xp_btn_submit = '/html/body/div[2]/div[2]/form/table/tbody/tr[4]/td/input'
+
+		xp_account_my_ss2_ac = '/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[43]/td[3]/a'
+
 		# Opening JSON file
 		f = open('data\login.json',)
 
@@ -15,15 +21,12 @@ class TranslnBot:
 		url = data['url']
 		user = data['user']
 		pasw = data['pass']
+		answer = data['answer']
 
-		print(url)
 		print(user)
-		print(pasw)
-
 
 		self.driver = webdriver.Chrome()
 		self.driver.get(url)
-		sleep(2)
 
 		# Closing file
 		f.close()
@@ -34,9 +37,12 @@ class TranslnBot:
 		# Actually logging in 
 		self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[4]/input').click()
 
-		sleep(4)
+		self.driver.find_element_by_xpath(xp_account_my_ss2_ac).click()
+		self.driver.find_element_by_xpath(xp_field_nickname).send_keys(answer)
+		self.driver.find_element_by_xpath(xp_btn_submit).click()
 
-		self.driver.find_element_by_xpath('/html/body/div[2]/div[3]/table/tbody/tr[2]/td/table/tbody/tr[43]/td[3]/a').click()
 		sleep(100)
+
+		
 
 TranslnBot()
