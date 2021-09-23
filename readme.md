@@ -1,3 +1,8 @@
+Selenium and ChromeDriver to 
+1. Login into NS
+2. Choose a role/account
+3. Navigate to Suitelet Deployment
+4. Update Translation tab (WIP)
 
 Create a file at `data/login.json`
 
