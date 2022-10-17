@@ -56,44 +56,44 @@ class TranslnBot:
 		# Closing file
 		f.close()
 
-		field_user = self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[1]/input[3]').send_keys(user)
-		field_pass = self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[2]/input').send_keys(pasw)
+		field_user = self.driver.find_element("xpath", '/html/body/div[3]/div[1]/form/div/div[1]/input[3]').send_keys(user)
+		field_pass = self.driver.find_element("xpath", '/html/body/div[3]/div[1]/form/div/div[2]/input').send_keys(pasw)
 
 		# Actually logging in 
-		self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[4]/input').click()
+		self.driver.find_element("xpath", '/html/body/div[3]/div[1]/form/div/div[4]/input').click()
 
 		# Choosing the account/role
-		self.driver.find_element_by_xpath(xp_account_chosen).click()
+		self.driver.find_element("xpath", xp_account_chosen).click()
 
 		# security question answer
-		self.driver.find_element_by_xpath(xp_field_nickname).send_keys(answer)
-		self.driver.find_element_by_xpath(xp_btn_submit).click()
+		self.driver.find_element("xpath", xp_field_nickname).send_keys(answer)
+		self.driver.find_element("xpath", xp_btn_submit).click()
 
 		# URL of Deployment in edit mode:
 		url_deployment_prefs = f'https://{account_id}.app.netsuite.com/app/common/scripting/scriptrecord.nl?id={deployment_id}&e=T'
 
 		# Login is done, directly navigating to required suitelet deployment by ID: 378
 		self.driver.get(url_deployment_prefs)
-		self.driver.find_element_by_xpath(xp_deployment_links_tab).click()
+		self.driver.find_element("xpath", xp_deployment_links_tab).click()
 		sleep(2)
 
 		# First Center
-		self.driver.find_element_by_xpath(xp_deployment_links_translation_center1).click()
+		self.driver.find_element("xpath", xp_deployment_links_translation_center1).click()
 		sleep(2)
-		self.driver.find_element_by_xpath(xp_center1_chinese1).send_keys('abc')
-		self.driver.find_element_by_xpath(xp_center1_chinese2).send_keys('def')
-		self.driver.find_element_by_xpath(xp_done_btn).click()
+		self.driver.find_element("xpath", xp_center1_chinese1).send_keys('abc')
+		self.driver.find_element("xpath", xp_center1_chinese2).send_keys('def')
+		self.driver.find_element("xpath", xp_done_btn).click()
 
 		# Second Center
-		self.driver.find_element_by_xpath(xp_deployment_links_translation_center2).click()
+		self.driver.find_element("xpath", xp_deployment_links_translation_center2).click()
 		sleep(2)
-		self.driver.find_element_by_xpath(xp_center2_chinese1).send_keys('abcd')
-		self.driver.find_element_by_xpath(xp_center2_chinese2).send_keys('deff')
-		self.driver.find_element_by_xpath(xp_done_btn).click()
+		self.driver.find_element("xpath", xp_center2_chinese1).send_keys('abcd')
+		self.driver.find_element("xpath", xp_center2_chinese2).send_keys('deff')
+		self.driver.find_element("xpath", xp_done_btn).click()
 		sleep(2)
 
 		# Save Deployment Record
-		self.driver.find_element_by_xpath(xp_save_record_btn).click()
+		self.driver.find_element("xpath", xp_save_record_btn).click()
 
 		sleep()
 
