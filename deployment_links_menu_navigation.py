@@ -38,20 +38,20 @@ class TranslnBot:
 		# Closing file
 		f.close()
 
-		field_user = self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[1]/input[3]').send_keys(user)
-		field_pass = self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[2]/input').send_keys(pasw)
+		field_user = self.driver.find_element("xpath", '/html/body/div[3]/div[1]/form/div/div[1]/input[3]').send_keys(user)
+		field_pass = self.driver.find_element("xpath", '/html/body/div[3]/div[1]/form/div/div[2]/input').send_keys(pasw)
 
 		# Actually logging in 
-		self.driver.find_element_by_xpath('/html/body/div[3]/div[1]/form/div/div[4]/input').click()
+		self.driver.find_element("xpath", '/html/body/div[3]/div[1]/form/div/div[4]/input').click()
 
 
 		# sleep(100)
 		# Choosing the account/role
-		self.driver.find_element_by_xpath(xp_account_qa_bundler).click()
+		self.driver.find_element("xpath", xp_account_qa_bundler).click()
 
 		# security question answer
-		self.driver.find_element_by_xpath(xp_field_nickname).send_keys(answer)
-		self.driver.find_element_by_xpath(xp_btn_submit).click()
+		self.driver.find_element("xpath", xp_field_nickname).send_keys(answer)
+		self.driver.find_element("xpath", xp_btn_submit).click()
 
 		#sleeping, to ensure "Customization" is loaded
 		sleep(1)
@@ -74,8 +74,8 @@ class TranslnBot:
 		# hover over element and click
 		ac1.move_to_element(n2).click().perform()
 
-		# link1 = self.driver.find_element_by_xpath("//td[contains(text(), "Electronic Invoicing Preferences")]/preceding-sibling::td[2]/a")
-		link2 = self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/form[2]/div[2]/table/tbody/tr[2]/td[2]/a[2]').click()
+		# link1 = self.driver.find_element("xpath", "//td[contains(text(), "Electronic Invoicing Preferences")]/preceding-sibling::td[2]/a")
+		link2 = self.driver.find_element("xpath", '/html/body/div[1]/div[2]/form[2]/div[2]/table/tbody/tr[2]/td[2]/a[2]').click()
 		sleep()
 
 TranslnBot()
